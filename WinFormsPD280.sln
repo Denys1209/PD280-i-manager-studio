@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsPD280", "WinFormsPD280\WinFormsPD280.csproj", "{3ECAB386-0FF5-4247-849F-F6D53AE7A7A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3ECAB386-0FF5-4247-849F-F6D53AE7A7A2}.Debug|x86.ActiveCfg = Debug|x86
+		{3ECAB386-0FF5-4247-849F-F6D53AE7A7A2}.Debug|x86.Build.0 = Debug|x86
+		{3ECAB386-0FF5-4247-849F-F6D53AE7A7A2}.Release|x86.ActiveCfg = Release|x86
+		{3ECAB386-0FF5-4247-849F-F6D53AE7A7A2}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54BFE54F-5D09-4311-A478-231EDD12466C}
+	EndGlobalSection
+EndGlobal
