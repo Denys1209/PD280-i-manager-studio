@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsPD280.Frame.Items
+namespace WinFormsPD280.Frame.Items;
+public interface IItem
 {
-    interface IItem
-    {
 
-        public void Execute(DisplayManager displayManager);
+    public void Execute(DisplayManager displayManager);
 
 
-    }
+
 }

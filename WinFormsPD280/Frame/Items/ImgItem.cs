@@ -1,6 +1,6 @@
 ﻿
 namespace WinFormsPD280.Frame.Items;
-internal class ImgItem :Item, IItem
+public class ImgItem :Item, IItem
 {
     public string Name { get; set; }
     public int ShowType { get; set; }
@@ -14,5 +14,10 @@ internal class ImgItem :Item, IItem
     public void Execute(DisplayManager displayManager)
     {
         displayManager.ShowPicture(Name, X, Y, ShowType);
+    }
+
+    public override string ToString() 
+    {
+        return $"Image; name = ${Name}; show type = ${ShowType}";
     }
 }

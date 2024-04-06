@@ -1,6 +1,6 @@
 ﻿
 namespace WinFormsPD280.Frame.Items;
-class StaticTextItem : Item, IItem
+public class StaticTextItem : Item, IItem
 {
     public int Color { get; set; }
     public string Text { get; set; }
@@ -16,5 +16,10 @@ class StaticTextItem : Item, IItem
     public void Execute(DisplayManager displayManager)
     {
         displayManager.ShowFixedText(Text, FontSize, X, Y, Color);
+    }
+
+    public override string ToString()
+    {
+        return $"Static text; text = ${Text}; FontSize = ${FontSize}; Color=${Color}";
     }
 }

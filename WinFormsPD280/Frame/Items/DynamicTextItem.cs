@@ -1,6 +1,6 @@
 ﻿
 namespace WinFormsPD280.Frame.Items;
-class DynamicTextItem : StaticTextItem
+public class DynamicTextItem : StaticTextItem
 {
     public int Id { get; set; }
 
@@ -13,4 +13,9 @@ class DynamicTextItem : StaticTextItem
     {
         displayManager.ShowDynamicText(Text, Id, FontSize, X, Y, Color);
     }
+    public override string ToString()
+    {
+        return $"Dynamic text; text = ${Text}; FontSize = ${FontSize}; Color = ${Color}; Id = ${Id}";
+    }
+
 }

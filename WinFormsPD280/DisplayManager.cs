@@ -1,10 +1,16 @@
 ﻿
 using System.Text;
+using WinFormsPD280.Frame;
 
 namespace WinFormsPD280;
-class DisplayManager
+public class DisplayManager
 {
+
     private bool isConnect;
+    private Thread threadForDisplayingFrames;
+    private bool isSliderRun;
+    private List<IDisplayFrame> displayFrames;
+    private CancellationTokenSource cts;
     public readonly int Height;
     public readonly int Width;
     private readonly int SizeForPaint; 
@@ -12,11 +18,29 @@ class DisplayManager
     public DisplayManager(int height = 320, int width = 240)
     {
         isConnect = false;
+        cts = new CancellationTokenSource(); 
         this.Height = height;
         this.Width = width;
-        this.SizeForPaint = 1;
+        this.SizeForPaint = 6;
+        displayFrames = new List<IDisplayFrame>();
+        isSliderRun = false;
+        threadForDisplayingFrames = new Thread(() => ExecuteAllFrames(cts.Token));
+        threadForDisplayingFrames.Start();
     }
 
+    private void ExecuteAllFrames(CancellationToken token)
+    {
+        while (!token.IsCancellationRequested)
+        {
+            if (!isSliderRun) continue;
+            foreach (var i in displayFrames)
+            {
+                this.InitializeDisplay();
+                i.DisplayMyself(this);
+                if (!isSliderRun || !token.IsCancellationRequested) break;
+            }
+        }
+    }
     public bool Connect(String com, int baudrate)
     {
         Boolean test = PD280Functions.OpenComm(com, baudrate);
@@ -103,5 +127,31 @@ class DisplayManager
             int result = PD280Functions.DSP_ShowFixedText(text.ToString(), SizeForPaint, x, y, color);
             PD280Functions.HandleError(result);
         }
+    }
+
+    public void StartSlider() 
+    {
+        isSliderRun = true;
+    }
+
+    public void StopSlider() 
+    {
+        isSliderRun = false;
+    }
+
+    public void AddNewFrame(IDisplayFrame frame) 
+    {
+        displayFrames.Add(frame);
+    }
+
+    public void DeleteFrame(IDisplayFrame frame) 
+    {
+        this.displayFrames.Remove(frame);
+    }
+
+    public void OnEndProgram() 
+    {
+        cts.Cancel();
+        threadForDisplayingFrames.Join();
     }
 }

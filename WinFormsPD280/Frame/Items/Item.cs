@@ -1,6 +1,7 @@
 ﻿
 namespace WinFormsPD280.Frame.Items;
-class Item
+
+public class Item
 {
 
     public int X { get; set; }

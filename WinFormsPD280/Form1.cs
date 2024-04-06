@@ -1,5 +1,7 @@
 using System.IO.Ports;
 using System.Windows.Forms;
+using WinFormsPD280.Frame;
+using WinFormsPD280.Frame.Items;
 
 namespace WinFormsPD280
 {
@@ -36,8 +38,13 @@ namespace WinFormsPD280
                 ListOfTextIds.Items.Add(i.ToString());
             }
             btnPickColor.BackColor = Color.Black;
+            this.FormClosing += new FormClosingEventHandler(Form1_FormClosing);
 
         }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            displayManager.OnEndProgram();
+                   }
 
         private void FindAndAddAllComPorts()
         {
@@ -220,5 +227,31 @@ namespace WinFormsPD280
             displayManager.ShowPicture(listOfImages.SelectedItem.ToString(), int.Parse(inputImgCorX.Text), int.Parse(inputImgCorY.Text), showImgType.SelectedIndex);
         }
 
-           }
+        private void btnAddNewFrame_Click(object sender, EventArgs e)
+        {
+            var displayFrame = new DisplayFrame($"slide = {listBoxOfFrames.Items.Count}");
+            var newFrameWindow = new CreateNewFrameForm(displayFrame);
+            newFrameWindow.Show();
+            listBoxOfFrames.Items.Add(displayFrame);
+            displayManager.AddNewFrame(displayFrame);
+        }
+
+        private void btnStartFrameSlider_Click(object sender, EventArgs e)
+        {
+            displayManager.StartSlider();
+        }
+
+        private void btnStopFrameSlider_Click(object sender, EventArgs e)
+        {
+            displayManager.StopSlider();
+        }
+
+        private void listBoxOfFrames_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (listBoxOfFrames.SelectedIndex != -1)
+            {
+                displayManager.DeleteFrame(listBoxOfFrames.Items[listBoxOfFrames.SelectedIndex] as IDisplayFrame);
+            }
+        }
+    }
 }

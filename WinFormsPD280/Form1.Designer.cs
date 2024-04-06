@@ -19,7 +19,7 @@
             }
             base.Dispose(disposing);
         }
-
+    
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -80,7 +80,9 @@
             label19 = new Label();
             label21 = new Label();
             showImgType = new ComboBox();
-            button1 = new Button();
+            btnAddNewFrame = new Button();
+            btnStartFrameSlider = new Button();
+            btnStopFrameSlider = new Button();
             SuspendLayout();
             // 
             // Connect
@@ -332,8 +334,9 @@
             listBoxOfFrames.ItemHeight = 25;
             listBoxOfFrames.Location = new Point(892, 71);
             listBoxOfFrames.Name = "listBoxOfFrames";
-            listBoxOfFrames.Size = new Size(458, 479);
+            listBoxOfFrames.Size = new Size(458, 529);
             listBoxOfFrames.TabIndex = 32;
+            listBoxOfFrames.MouseDoubleClick += listBoxOfFrames_MouseDoubleClick;
             // 
             // label13
             // 
@@ -549,21 +552,44 @@
             showImgType.Size = new Size(248, 33);
             showImgType.TabIndex = 53;
             // 
-            // button1
+            // btnAddNewFrame
             // 
-            button1.Location = new Point(892, 556);
-            button1.Name = "button1";
-            button1.Size = new Size(458, 34);
-            button1.TabIndex = 54;
-            button1.Text = "add a new frame";
-            button1.UseVisualStyleBackColor = true;
+            btnAddNewFrame.Location = new Point(892, 617);
+            btnAddNewFrame.Name = "btnAddNewFrame";
+            btnAddNewFrame.Size = new Size(458, 34);
+            btnAddNewFrame.TabIndex = 54;
+            btnAddNewFrame.Text = "add a new frame";
+            btnAddNewFrame.UseVisualStyleBackColor = true;
+            btnAddNewFrame.Click += btnAddNewFrame_Click;
+            // 
+            // btnStartFrameSlider
+            // 
+            btnStartFrameSlider.Location = new Point(892, 657);
+            btnStartFrameSlider.Name = "btnStartFrameSlider";
+            btnStartFrameSlider.Size = new Size(227, 34);
+            btnStartFrameSlider.TabIndex = 55;
+            btnStartFrameSlider.Text = "start frame slider";
+            btnStartFrameSlider.UseVisualStyleBackColor = true;
+            btnStartFrameSlider.Click += btnStartFrameSlider_Click;
+            // 
+            // btnStopFrameSlider
+            // 
+            btnStopFrameSlider.Location = new Point(1125, 657);
+            btnStopFrameSlider.Name = "btnStopFrameSlider";
+            btnStopFrameSlider.Size = new Size(227, 34);
+            btnStopFrameSlider.TabIndex = 56;
+            btnStopFrameSlider.Text = "stop frame slider";
+            btnStopFrameSlider.UseVisualStyleBackColor = true;
+            btnStopFrameSlider.Click += btnStopFrameSlider_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1377, 906);
-            Controls.Add(button1);
+            Controls.Add(btnStopFrameSlider);
+            Controls.Add(btnStartFrameSlider);
+            Controls.Add(btnAddNewFrame);
             Controls.Add(showImgType);
             Controls.Add(label21);
             Controls.Add(inputImgCorY);
@@ -676,6 +702,8 @@
         private Label label19;
         private Label label21;
         private ComboBox showImgType;
-        private Button button1;
+        private Button btnAddNewFrame;
+        private Button btnStartFrameSlider;
+        private Button btnStopFrameSlider;
     }
 }
