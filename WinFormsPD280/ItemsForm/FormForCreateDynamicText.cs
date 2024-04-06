@@ -11,13 +11,20 @@ using WinFormsPD280.Frame.Items;
 
 namespace WinFormsPD280.ItemsForm
 {
-    public partial class FormForCreateTextItem : Form
+    public partial class FormForCreateDynamicText : Form
     {
-        private StaticTextItem staticTextItem;
-        public FormForCreateTextItem(StaticTextItem staticTextItem)
+
+        private DynamicTextItem dynamicTextItem;
+
+        public FormForCreateDynamicText(DynamicTextItem dynamicText)
         {
             InitializeComponent();
-            this.staticTextItem = staticTextItem; 
+            dynamicTextItem = dynamicText;
+
+            for (int i = 1; i <= 20; ++i) 
+            {
+                comboxListOfIds.Items.Add(i.ToString());
+            }
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -43,11 +50,12 @@ namespace WinFormsPD280.ItemsForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            staticTextItem.Text = textBoxForText.Text;
-            staticTextItem.FontSize = int.Parse(textBoxFontSize.Text);
-            staticTextItem.Color = btnColor.BackColor.ToArgb();
-            staticTextItem.X = int.Parse(textBoxCorX.Text);
-            staticTextItem.Y = int.Parse(textBoxCorY.Text);
+            dynamicTextItem.Text = textBoxForText.Text;
+            dynamicTextItem.FontSize = int.Parse(textBoxFontSize.Text);
+            dynamicTextItem.Color = btnColor.BackColor.ToArgb();
+            dynamicTextItem.X = int.Parse(textBoxCorX.Text);
+            dynamicTextItem.Y = int.Parse(textBoxCorY.Text);
+            dynamicTextItem.Id = int.Parse(comboxListOfIds.SelectedItem.ToString());
             this.Close();
         }
     }

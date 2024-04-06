@@ -19,7 +19,7 @@
             }
             base.Dispose(disposing);
         }
-    
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -586,7 +586,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1377, 906);
+            ClientSize = new Size(1377, 712);
             Controls.Add(btnStopFrameSlider);
             Controls.Add(btnStartFrameSlider);
             Controls.Add(btnAddNewFrame);

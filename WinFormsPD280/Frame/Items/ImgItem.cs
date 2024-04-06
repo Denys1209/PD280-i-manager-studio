@@ -18,6 +18,6 @@ public class ImgItem :Item, IItem
 
     public override string ToString() 
     {
-        return $"Image; name = ${Name}; show type = ${ShowType}";
+        return $"Image; name = {Name}; show type = {ShowType}";
     }
 }

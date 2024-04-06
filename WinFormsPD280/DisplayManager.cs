@@ -37,7 +37,7 @@ public class DisplayManager
             {
                 this.InitializeDisplay();
                 i.DisplayMyself(this);
-                if (!isSliderRun || !token.IsCancellationRequested) break;
+                //if (!isSliderRun || !token.IsCancellationRequested) break;
             }
         }
     }

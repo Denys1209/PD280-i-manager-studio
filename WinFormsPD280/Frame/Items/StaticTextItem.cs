@@ -20,6 +20,6 @@ public class StaticTextItem : Item, IItem
 
     public override string ToString()
     {
-        return $"Static text; text = ${Text}; FontSize = ${FontSize}; Color=${Color}";
+        return $"Static text; text = {Text}; FontSize = {FontSize}";
     }
 }

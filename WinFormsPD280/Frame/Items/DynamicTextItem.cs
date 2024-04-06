@@ -15,7 +15,7 @@ public class DynamicTextItem : StaticTextItem
     }
     public override string ToString()
     {
-        return $"Dynamic text; text = ${Text}; FontSize = ${FontSize}; Color = ${Color}; Id = ${Id}";
+        return $"Dynamic text; text = {Text}; FontSize = {FontSize}; Color = {Color}; Id = {Id}";
     }
 
 }

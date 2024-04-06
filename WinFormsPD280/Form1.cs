@@ -231,7 +231,7 @@ namespace WinFormsPD280
         {
             var displayFrame = new DisplayFrame($"slide = {listBoxOfFrames.Items.Count}");
             var newFrameWindow = new CreateNewFrameForm(displayFrame);
-            newFrameWindow.Show();
+            newFrameWindow.ShowDialog();
             listBoxOfFrames.Items.Add(displayFrame);
             displayManager.AddNewFrame(displayFrame);
         }
